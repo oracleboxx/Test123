@@ -14,7 +14,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-	<jsp:include page="../../header.jsp" />
+	<jsp:include page="header.jsp" />
 	<div id="carouselExampleAutoplaying" class="carousel slide"
 		data-bs-ride="carousel">
 		<!-- Carousel Indicators -->
@@ -26,16 +26,16 @@
 		</ol>
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="<%=request.getContextPath()%>/resources/img/women/display1.png"
-					class="d-block w-100" alt="men_image_1">
+				<img src="<%=request.getContextPath()%>/resources/img/slider/sample_image_1.jpg"
+					class="d-block w-100" alt="slider_image_1">
 			</div>
 			<div class="carousel-item">
-				<img src="<%=request.getContextPath()%>/resources/img/women/display2.png"
-					class="d-block w-100" alt="men_image_2">
+				<img src="<%=request.getContextPath()%>/resources/img/slider/sample_image_2.jpg"
+					class="d-block w-100" alt="slider_image_2">
 			</div>
 			<div class="carousel-item">
-				<img src="<%=request.getContextPath()%>/resources/img/women/display3.png"
-					class="d-block w-100" alt="men_image_3">
+				<img src="<%=request.getContextPath()%>/resources/img/slider/sample_image_3.jpg"
+					class="d-block w-100" alt="slider_image_3">
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button"
@@ -65,13 +65,13 @@
 				<div class="col-xl-3 col-lg-4 col-md-6 col-6 mb-2">
 					<!-- Changed mb-4 to mb-2 -->
 					<div class="card">
-						<img src="<%=request.getContextPath()%>/resources/img/women/awomen${i}.png"
-							class="card-img-top" alt="women Image ${i}">
+						<img src="<%=request.getContextPath()%>/resources/img/product/sample_product_${i}.jpg"
+							class="card-img-top" alt="Product Image ${i}">
 						<div class="card-body">
-							<p class="card-title mb-0" style="font-weight: bold;">For Women
-								 ${i}</p>
-							<p class="card-text mb-1">Women Item ${i}</p>
-							<p class="card-text mt-3" style="font-weight: bold;">1,000,000원</p>
+							<p class="card-title mb-0" style="font-weight: bold;">Product
+								Name ${i}</p>
+							<p class="card-text mb-1">Product Description ${i}</p>
+							<p class="card-text mt-3" style="font-weight: bold;">10000원</p>
 							<!-- Link to product details page -->
 							<a href="<%=request.getContextPath()%>/product/details/${i}" class="stretched-link"></a>
 						</div>
@@ -84,48 +84,10 @@
 	
 	<div class="text-center mt-0">
 		<!-- Adjusted the margin-top to 2rem -->
-		<a class="btn btn-outline-secondary mb-3" id="load-more-button">더보기</a>
+		<a href="<%=request.getContextPath()%>/products/details" class="btn btn-outline-secondary mb-3">더보기</a>
 	</div>
-	<script>
-	var totalImageItems = 4; // 처음에 4개의 이미지 항목이 보이도록 설정
-
-	document.getElementById("load-more-button").addEventListener("click", function () {
-	    // 추가할 이미지 항목 수
-	    var itemsToAdd = 4; // 이미지 항목을 4개씩 추가
-
-	    // 이미지 항목을 추가하는 코드
-	    for (var i = 0; i < itemsToAdd; i++) {
-	        if (totalImageItems >= 12) { // 예시로 10개의 이미지가 있다고 가정
-	            // 이미지 항목을 모두 추가한 경우 "더보기" 버튼을 숨김
-	            document.getElementById("load-more-button").style.display = "none";
-	            break;
-	        }
-
-	        // 이미지 항목 생성 (하드 코딩)
-	        var imageItem = document.createElement("div");
-	        imageItem.className = "col-xl-3 col-lg-4 col-md-6 col-6 mb-2";
-	        imageItem.innerHTML = `
-	            <div class="card">
-	                <img src="<%=request.getContextPath()%>/resources/img/women/awomen${totalImageItems + 1}.png"
-	                        class="card-img-top" alt="women Image ${totalImageItems + 1}">
-	                <div class="card-body">
-	                    <p class="card-title mb-0" style="font-weight: bold;">For Women ${totalImageItems + 1}</p>
-	                    <p class="card-text mb-1">Women Item ${totalImageItems + 1}</p>
-	                    <p class="card-text mt-3" style="font-weight: bold;">1,000,000원</p>
-	                    <a href="<%=request.getContextPath()%>/product/details/${totalImageItems + 1}" class="stretched-link"></a>
-	                </div>
-	            </div>
-	        `;
-
-	        // 이미지 항목을 .row 요소에 추가
-	        document.querySelector(".row").appendChild(imageItem);
-
-	        // totalImageItems를 업데이트
-	        totalImageItems++;
-	    }
-	});
-	</script>
-	<jsp:include page="../../footer.jsp" />
+	
+	<jsp:include page="footer.jsp" />
 
 	<!-- Bootstrap JS and Popper.js -->
 	<script

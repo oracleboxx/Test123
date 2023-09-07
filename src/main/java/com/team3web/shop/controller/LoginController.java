@@ -32,35 +32,35 @@ public class LoginController {
 	
 	
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-	
+    @Autowired
     UserService userservice;
 	private NaverLoginBO naverLoginBO;
 	private KakaoLoginBO kakaoLoginBO;
 	
 	
 	
-	@Autowired
-	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
-		this.naverLoginBO = naverLoginBO;
-	}
-	
-	@Autowired
-	private void setKakaoLoginBO(KakaoLoginBO kakaoLoginBO) {
-		this.kakaoLoginBO = kakaoLoginBO;
-	}
-	
-	@RequestMapping(value = "/login" , method = { RequestMethod.GET, RequestMethod.POST })
-    public String login(Model model, HttpSession session) {
-		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		System.out.println("네이버: " + naverAuthUrl);
-		model.addAttribute("naverUrl", naverAuthUrl);
-		
-	    String kakaoAuthUrl = kakaoLoginBO.getAuthorizationUrl(session);
-	    System.out.println("카카오: " + kakaoAuthUrl);
-	    model.addAttribute("kakaoUrl", kakaoAuthUrl);
-	    
-		return "/user/login";
-	}
+//	@Autowired
+//	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+//		this.naverLoginBO = naverLoginBO;
+//	}
+//	
+//	@Autowired
+//	private void setKakaoLoginBO(KakaoLoginBO kakaoLoginBO) {
+//		this.kakaoLoginBO = kakaoLoginBO;
+//	}
+//	
+//	@RequestMapping(value = "/login" , method = { RequestMethod.GET, RequestMethod.POST })
+//    public String login(Model model, HttpSession session) {
+//		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+//		System.out.println("네이버: " + naverAuthUrl);
+//		model.addAttribute("naverUrl", naverAuthUrl);
+//		
+//	    String kakaoAuthUrl = kakaoLoginBO.getAuthorizationUrl(session);
+//	    System.out.println("카카오: " + kakaoAuthUrl);
+//	    model.addAttribute("kakaoUrl", kakaoAuthUrl);
+//	    
+//		return "/user/login";
+//	}
 	
 	@RequestMapping(value = "/naver/callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String naverCallback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws IOException, ParseException {
@@ -127,6 +127,13 @@ public class LoginController {
 	}
 	// webPageLogin 
 	
+	  // 로그인 get
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String getSignin() throws Exception {
+        logger.info("get signin");
+        return "/user/login";
+    }
+
 	
     // 로그인 post
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -136,11 +143,11 @@ public class LoginController {
         HttpSession session = req.getSession();
         if (login != null && vo.getPw().equals(login.getPw())) {
             session.setAttribute("user", login);
-            return "redirect:/user/login";
+            return "redirect:/";
         } else {
             session.setAttribute("user", null);
             rttr.addFlashAttribute("msg", false);
-            return "redirect:/user/signin";
+            return "redirect:/login";
         }
     }
 }

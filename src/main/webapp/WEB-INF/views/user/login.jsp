@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -169,7 +170,7 @@
 	<jsp:include page="../header.jsp" />
 	<div class="login-container">
 		<h1>로그인</h1>
-		 <form action="<%=request.getContextPath()%>/" method="post" onsubmit="loginEvent();">
+		 <form action="<%=request.getContextPath()%>/login" method="post" >
             <!-- 로그인 폼 내용 -->
                 <div class="input-group">
                     <label for="id">아이디:</label> 
@@ -181,6 +182,10 @@
                 </div>
                 <button type="submit">로그인</button><hr>
                 <div class="login-button">
+                   
+						<c:if test="${msg == false}">
+							<p style="color: #f00;">로그인에 실패했습니다.</p>
+						</c:if>
                 
                 
                 

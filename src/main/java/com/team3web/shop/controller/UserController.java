@@ -1,7 +1,6 @@
 package com.team3web.shop.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpSession;
 
@@ -99,6 +98,13 @@ public class UserController {
         userservice.signup(vo);
         return "redirect:/";
     }
+    
+    @RequestMapping(value = "/myPage", method = RequestMethod.GET)
+    public String getMyPage() throws Exception{
+    	logger.info("get myPage");
+    	return "/myPage/myPage/";
+    }
+    
 
 
 //    public String register(@RequestParam("id") String id, 

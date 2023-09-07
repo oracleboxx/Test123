@@ -11,4 +11,6 @@ public interface UserDAO {
     public void signup(UserVO vo)throws Exception;
     //일반 웹사이트 로그인 
     public UserVO signin(UserVO vo) throws Exception;
+    
+    public void memberUpdate(UserVO vo)throws Exception;
 }

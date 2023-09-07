@@ -42,5 +42,12 @@ public class UserServiceImpl implements UserService {
 	public void signup(UserVO vo) throws Exception {
 		userDAO.signup(vo);
 	}
+
+	@Override
+	public void memberUpdate(UserVO vo) throws Exception {
+		userDAO.memberUpdate(vo);
+	}
+
+
 }
 

@@ -12,4 +12,6 @@ public interface UserService {
     public void signup(UserVO vo)throws Exception;
     //로그인 기능
     public UserVO signin(UserVO vo)throws Exception;
+    
+    public void memberUpdate(UserVO vo)throws Exception;
 }

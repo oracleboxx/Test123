@@ -25,6 +25,19 @@
 
 	</select>
 	
+	
+	<update id ="memberUpdate">
+	update shop_user set
+	
+	pw = #{pw},
+	name = #{name},
+	gender = #{gender},
+	nickname = #{nickname},
+	address = #{address},
+	birthday  = #{birthday}
+	where id = #{id}
+	
+	</update>
 <!-- 	<select id="loginUser" parameterType="User" resultType="User">
 	SELECT 
 		ID

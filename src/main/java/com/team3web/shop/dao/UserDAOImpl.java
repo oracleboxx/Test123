@@ -41,5 +41,12 @@ public class UserDAOImpl implements UserDAO {
 	public void signup(UserVO vo) throws Exception {
 		sqlSession.insert(namespace + ".signup", vo);
 	}
+
+	@Override
+	public void memberUpdate(UserVO vo) throws Exception {
+		sqlSession.update(namespace+".memberUpdate",vo);
+		
+	}
+	
 }
 
